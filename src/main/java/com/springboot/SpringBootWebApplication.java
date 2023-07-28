@@ -2,6 +2,7 @@ package com.springboot;
 
 import com.springboot.dao.UserRepository;
 import com.springboot.entities.User;
+import java.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -26,6 +27,21 @@ public class SpringBootWebApplication {
         User user1 = userRepository.save(user);
 
         System.out.println(user1);
+
+        User user2 = new User("Raju", "Barasat");
+        User user3 = new User("Soumya", "Khardah");
+
+        //add multiple user in list 
+        //this is introduced in java 9
+        List<User> users = List.of(user3, user2);
+
+        //save multiple user in database
+        Iterable<User> resultUsers = userRepository.saveAll(users);
+
+        //traverse in list and print data
+        resultUsers.forEach(u -> {
+            System.out.println(u);
+        });
     }
 
 }
