@@ -67,6 +67,20 @@ public class SpringBootWebApplication {
 
         userRepository.deleteById(102);
         //same deleteAll(); to delete all users
+
+        //get data from database using custom finder
+        List<User> resultList = userRepository.findByName("Soumya");
+
+        resultList.forEach(u -> {
+            System.out.println(u);
+        });
+
+        //get data using custom finder method or derived method
+        List<User> resultUserList = userRepository.findByNameAndCity("Raju", "Barasat");
+
+        resultUserList.forEach(u -> {
+            System.out.println(u);
+        });
     }
 
 }
