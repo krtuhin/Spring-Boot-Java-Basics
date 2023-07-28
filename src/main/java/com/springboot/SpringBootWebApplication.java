@@ -3,6 +3,7 @@ package com.springboot;
 import com.springboot.dao.UserRepository;
 import com.springboot.entities.User;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -42,6 +43,30 @@ public class SpringBootWebApplication {
         resultUsers.forEach(u -> {
             System.out.println(u);
         });
+
+        //update data into database
+        //get single object from database
+        Optional<User> op = userRepository.findById(4);
+
+        User rUser = op.get();
+
+        //update value
+        rUser.setCity("Bankura");
+
+        //update data into database
+        userRepository.save(rUser);
+
+        System.out.println(rUser);
+
+        //get multiple object from database
+        Iterable<User> rUsers = userRepository.findAll();
+
+        rUsers.forEach(u -> {
+            System.out.println(u);
+        });
+
+        userRepository.deleteById(102);
+        //same deleteAll(); to delete all users
     }
 
 }
