@@ -22,11 +22,11 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     public List<User> findByNameContaining(String word);
 
-    public List<User> findByAgeLessThan(int age);
+//    public List<User> findByAgeLessThan(int age);
 
     public List<User> findByNameLike(String likePettern);
 
-    public List<User> findByAgeIn(Collection<Integer> ages);
+//    public List<User> findByAgeIn(Collection<Integer> ages);
 
     //JPQL
     @Query("from User")
