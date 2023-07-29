@@ -81,6 +81,24 @@ public class SpringBootWebApplication {
         resultUserList.forEach(u -> {
             System.out.println(u);
         });
+
+        //get data from database using JPQL
+        List<User> userList = userRepository.selectAll();
+        userList.forEach(u -> {
+            System.out.println(u);
+        });
+
+        //get data from database using JPQL
+        List<User> userLists = userRepository.selectUserByName("Soumya");
+        userLists.forEach(u -> {
+            System.out.println(u);
+        });
+
+        //get data from database using Native QueryFFFFFF
+        List<User> usersList = userRepository.selectUserByCity("Kolkata");
+        usersList.forEach(u -> {
+            System.out.println(u);
+        });
     }
 
 }
